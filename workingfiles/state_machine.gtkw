@@ -1,0 +1,27 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Wed Feb  1 11:03:35 2023
+[*]
+[dumpfile] "/home/con/Documents/constudystuff/workingfiles/_sim/state_machine.vcd"
+[dumpfile_mtime] "Wed Feb  1 11:02:10 2023"
+[dumpfile_size] 995
+[savefile] "/home/con/Documents/constudystuff/workingfiles/state_machine.gtkw"
+[timestart] 0
+[size] 1974 1088
+[pos] -39 -39
+*0.000000 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench_gcd.
+[sst_width] 233
+[signals_width] 265
+[sst_expanded] 1
+[sst_vpaned_height] 314
+@29
+testbench_gcd.state_machine_i.clk_i
+@28
+testbench_gcd.state_machine_i.reset_i
+testbench_gcd.state_machine_i.in_i
+testbench_gcd.state_machine_i.state_n[1:0]
+testbench_gcd.state_machine_i.state_p[1:0]
+testbench_gcd.state_machine_i.out_o[2:0]
+[pattern_trace] 1
+[pattern_trace] 0
