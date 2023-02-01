@@ -7,7 +7,7 @@ MAKEFILEDIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 MAKEFILEDIRNAME := $(basename $(MAKEFILEDIR))
 
 #MULTIPLIER_SV_SOURCES := multiplier.sv testbench.sv
-MULTIPLIER_SV_SOURCES := state_machine.sv testbench_20210213.sv
+MULTIPLIER_SV_SOURCES := state_machine.sv testbench_20210222.sv
 SIMDIR := $(MAKEFILEDIR)_sim/
 SYNTHDIR := $(MAKEFILEDIR)_synth/
 
