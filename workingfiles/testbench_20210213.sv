@@ -23,12 +23,12 @@ module testbench_gcd ();
 
   initial begin
 
-    clk   = 0;
+    clk   = 1;
     reset = 1;
     in = 0;
-    #100 // 0-1 > 0
+    #50 // 0-1 > 0 / änderung immer auf fallender flanke setzen
+    #100 // 1-2
     reset = 0;
-    #100 // 1-2 > 1
     #100 // 2
     #100 // 3
     #100 // 4
