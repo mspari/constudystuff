@@ -1,10 +1,10 @@
 # Read source files
 read -incdir ips
-read -sv2012 _synth/multiplier.v
+read -sv2012 _synth/state_machine.v
 read_verilog -lib lib/cmos_cells.v
 
 # Set top module
-hierarchy -check -top multiplier;
+hierarchy -check -top state_machine;
 
 # Synthesis
 synth;
@@ -13,10 +13,10 @@ abc -liberty lib/cmos_cells.lib;
 opt_clean;
 
 # Save netlist
-write_verilog -noattr _synth/multiplier_synthesized.v;
+write_verilog -noattr _synth/state_machine_synthesized.v;
 
 # generate dot representation
-show -format dot -prefix _synth/multiplier_synth;
+show -format dot -prefix _synth/state_machine_synth;
 
 # Print generic area information
-tee -o _synth/multiplier.stats stat -liberty lib/cmos_cells.lib;
+tee -o _synth/state_machine.stats stat -liberty lib/cmos_cells.lib;

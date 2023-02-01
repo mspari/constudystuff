@@ -6,11 +6,13 @@ endif
 MAKEFILEDIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 MAKEFILEDIRNAME := $(basename $(MAKEFILEDIR))
 
-MULTIPLIER_SV_SOURCES := multiplier.sv testbench.sv
+#MULTIPLIER_SV_SOURCES := multiplier.sv testbench.sv
+MULTIPLIER_SV_SOURCES := state_machine.sv testbench_20210213.sv
 SIMDIR := $(MAKEFILEDIR)_sim/
 SYNTHDIR := $(MAKEFILEDIR)_synth/
 
-MULTIPLIER_SV := multiplier
+#MULTIPLIER_SV := multiplier
+MULTIPLIER_SV := state_machine
 
 IVERILOGFLAGS ?= -Wall -g2012 -Wno-sensitivity-entire-array -I$(MAKEFILEDIR)
 
@@ -42,28 +44,28 @@ clean:
 help:
 	@cat ${MAKEFILE_LIST} | sed -n 's/^#help//p'
 
-$(SIMDIR)multiplier.vvp: $(MULTIPLIER_SV_SOURCES)
+$(SIMDIR)state_machine.vvp: $(MULTIPLIER_SV_SOURCES)
 	@mkdir -p $(SIMDIR)
 	$(IVERILOG) $(IVERILOGFLAGS) -o $@ $(MULTIPLIER_SV_SOURCES)
 
 #help
 #help	build	builds the multiplier module
-build: $(SIMDIR)multiplier.vvp ;
+build: $(SIMDIR)state_machine.vvp ;
 
 #help
 #help	test	runs the multiplier in the testbench
-test: $(SIMDIR)multiplier.vvp
-	$(SIMDIR)multiplier.vvp
+test: $(SIMDIR)state_machine.vvp
+	$(SIMDIR)state_machine.vvp
 
 #help
 #help	view	runs the multiplier in gtkwave
-view: $(SIMDIR)multiplier.vvp
-	$(SIMDIR)multiplier.vvp
-	$(GTKWAVE) --save $(MULTIPLIER_SV).gtkw $(SIMDIR)multiplier.vcd
+view: $(SIMDIR)state_machine.vvp
+	$(SIMDIR)state_machine.vvp
+	$(GTKWAVE) --save $(MULTIPLIER_SV).gtkw $(SIMDIR)state_machine.vcd
 
 #help
 #help 	synth	synthesizes the design with yosys
 synth:
 	@mkdir -p $(SYNTHDIR)
-	sv2v -E logic $(MULTIPLIER_SV).sv -w $(SYNTHDIR)/multiplier.v
+	sv2v -E logic $(MULTIPLIER_SV).sv -w $(SYNTHDIR)/state_machine.v
 	$(YOSYS) -T synth.ys
